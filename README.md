@@ -29,6 +29,18 @@ The gate runs: OCR regressions (needs fixtures), Gemini API contract checks
 (needs `.env`), and the dictionary spike build (Xcode). Network/API tests
 skip loudly when unconfigured rather than failing.
 
+### Simulator policy
+
+The developer runs other apps on this Mac's simulators. **All simulator
+runs for this repo go through `./scripts/simulator.sh`**, which creates and
+uses a dedicated device (`ChimahonSpike-iPhone17`) and never touches any
+other simulator:
+
+```sh
+./scripts/simulator.sh erase-and-boot   # fresh dedicated device
+./scripts/simulator.sh udid             # print its UDID for xcodebuild -destination
+```
+
 ## First-time setup
 
 ```sh

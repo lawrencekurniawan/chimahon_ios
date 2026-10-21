@@ -36,3 +36,4 @@ xcuserdata/
 .vscode/
 *.swp
 *~
+.simulator-udid
