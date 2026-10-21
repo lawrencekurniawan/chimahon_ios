@@ -1,0 +1,45 @@
+name: ChimahonSpike
+options:
+  bundleIdPrefix: app.chimahon
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+
+packages:
+  HoshiDicts:
+    path: ../chimahon-src/chimahon/src/main/cpp/hoshidicts
+
+targets:
+  ChimahonSpike:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+      - path: Resources
+        buildPhase: resources
+    dependencies:
+      - package: HoshiDicts
+        product: CHoshiDicts
+    info:
+      path: generated/Info.plist
+      properties:
+        CFBundleDisplayName: Chimahon Spike
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        ITSAppUsesNonExemptEncryption: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.chimahon.spike
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "6.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        # Enable C++ interop so app Swift code can import the CHoshiDicts C++ module
+        OTHER_SWIFT_FLAGS: "-cxx-interoperability-mode=default"
+        GENERATE_INFOPLIST_FILE: "NO"
+        CODE_SIGN_IDENTITY: ""
+        CODE_SIGNING_REQUIRED: "NO"
+        CODE_SIGNING_ALLOWED: "NO"

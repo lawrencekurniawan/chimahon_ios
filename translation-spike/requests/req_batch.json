@@ -1,0 +1,4 @@
+{
+  "contents": [{"parts": [{"text": "You are translating a Vietnamese webtoon chapter to English for a language learner. For EACH numbered bubble below, return JSON array: [{\"id\": int, \"full_translation\": string, \"word_by_word\": [{\"word\": string, \"meaning\": string, \"grammar_note\": string}]}]. Return ONLY the JSON array.\n\nBubble 1: CẢNH ĐẸP MÊ HỒN CHO ĐỜI TA,\nBubble 2: CÔ ẤY DẦN NHẬN RA NƠI NÀY TỒI TỆ ĐẾN MỨC NÀO.\nBubble 3: SỰ TỒN TẠI CỦA FOG, MÔI TRƯỜNG CHÀ ĐẠP ĐẠO ĐỨC..."}]}],
+  "generationConfig": {"temperature": 0.2, "responseMimeType": "application/json"}
+}

@@ -1,0 +1,4 @@
+{
+  "contents": [{"parts": [{"text": "Translate and explain this Korean webtoon dialogue for an English-speaking learner. Return ONLY valid JSON: {\"full_translation\": string, \"word_by_word\": [{\"word\": string, \"reading_or_meaning\": string, \"grammar_note\": string}]}. Text: 안녕하세요, 오늘 날씨가 정말 좋네요! 너희들은 어디로 가고 있어요?"}]}],
+  "generationConfig": {"temperature": 0.2, "responseMimeType": "application/json"}
+}

@@ -1,0 +1,38 @@
+# --- Secrets (never commit) ---
+.env
+.env.*
+*.key
+Secrets.xcconfig
+
+# --- Upstream reference clone (re-create via: git clone --depth 1 https://github.com/Chimahon/chimahon) ---
+chimahon-src/
+
+# --- Downloaded copyrighted test fixtures (re-create via: ocr-spike/images/fetch_images.sh) ---
+ocr-spike/images/*
+!ocr-spike/images/fetch_images.sh
+
+# --- Xcode / Swift build output ---
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+.swiftpm/
+.build/
+
+# --- macOS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# --- Editors ---
+.idea/
+.vscode/
+*.swp
+*~

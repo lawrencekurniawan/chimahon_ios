@@ -1,0 +1,4 @@
+{
+  "contents": [{"parts": [{"text": "Translate and explain this Vietnamese comic dialogue for an English-speaking learner. Return ONLY valid JSON with this schema: {\"full_translation\": string, \"word_by_word\": [{\"word\": string, \"reading_or_meaning\": string, \"grammar_note\": string}], \"tone_register_note\": string}. Context: post-apocalyptic webtoon, a character reminiscing.\n\nText: NHỮNG NGÀY ẤY VUI VẺ LẮM, CHẲNG AI ĐÁNH NHAU. MỌI NGƯỜI CHỈ HÁT HÒ, TRÒ CHUYỆN, RỒI CHIA NHAU NHỮNG MÓN NGON..."}]}],
+  "generationConfig": {"temperature": 0.2, "responseMimeType": "application/json"}
+}
