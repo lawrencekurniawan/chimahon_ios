@@ -16,6 +16,7 @@ webtoon reader.
 | Apple Vision OCR (Vietnamese + Korean) | ✅ 100% on real pages | `ocr-spike/README.md` |
 | LLM-vision OCR cross-check (Gemini) | ✅ perfect | `ocr-spike/README.md` |
 | Free-tier translation chain (Gemini) | ✅ works + throttling mapped | `translation-spike/README.md` |
+| WKWebView Cloudflare cookie-bridge | ✅ proven end-to-end | `cloudflare-spike/README.md` |
 
 ## Development workflow
 
@@ -69,7 +70,9 @@ cp Secrets.example.xcconfig Secrets.xcconfig               # bundled key for bui
 ```
 FEASIBILITY.md        # master analysis, decisions, spike results
 chimahon-spike/       # dictionary engine (hoshidicts) SwiftUI spike
+cloudflare-spike/     # WKWebView Cloudflare cookie-bridge spike
 ocr-spike/            # Apple Vision + Gemini OCR tests, fixture fetcher
 translation-spike/    # Gemini free-tier translation chain tests
 scripts/run_tests.sh  # pre-push test gate
+scripts/simulator.sh  # dedicated spike simulator (never personal devices)
 ```

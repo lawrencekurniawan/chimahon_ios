@@ -306,8 +306,11 @@ confirmed viable.**
 - Batching: 3 bubbles/req in 11 s, 165/662 tokens → ~45-bubble chapter ≈
   2–3 requests ≈ 2.5K/10K tokens → hundreds of chapters/day inside free tier.
 - **Model availability:** `gemini-2.5-flash` is *gone* for new accounts
-  (404); v1 uses **`gemini-3.8-flash` primary** + `gemini-3.x-flash-lite`
-  in-chain failover + Apple on-device final fallback.
+  (404); sweep 2026-10-22 showed **`gemini-3.8-flash` is the ONLY callable
+  text model on our key** — 10+ candidates tested (2.5/3.1/3.5/3.6/3.7-flash,
+  `*-latest` aliases, gemma-4, 4-argon) all return instant empty 404; no
+  callable flash-*lite* text model exists either. In-chain failover = other
+  free providers (research spike, queued) + Apple on-device final fallback.
 - **Throttling observed live:** intermittent `503 UNAVAILABLE` "high
   demand" (7–17 s success latency; occasional instant edge-404 under
   burst) — confirms the rotation/cooldown/backoff/jitter + per-segment
@@ -368,6 +371,34 @@ cooldown/circuit-breaker on timeout/429, per-segment caching** so each line is
 translated exactly once. Batch requests bundle a whole page's bubbles (~1 chapter
 ≈ a few K tokens ≈ free-tier dust). Estimated total cost: **$0**, bounded only
 by free-tier rate limits (fine for personal reading volume).
+
+#### Confirmed engine strategy (user 2026-10-22) + measured quota reality
+
+Measured 2026-10-22: the optimistic assumption above ("~15 req/min, ~1M
+tokens/day") is **wrong for this key/model** — after ~1 day of spike testing
+the `gemini-3.8-flash` free quota hit `generate_content_free_tier_requests
+limit: 20` with **"retry in 6h38m"**, i.e. a small multi-hour window, not a
+per-minute limit. Plan accordingly:
+
+1. **Cache-first, request-minimal:** per-segment SQLite cache (each line
+   translated once, ever) + aggressive batching (whole page/chapter per
+   request — measured 3 bubbles/req → push toward ~45 bubbles/req) + retry
+   with backoff on 429. v1 model: **`gemini-3.8-flash`** (only callable model;
+   retest `*-lite` variants when re-evaluating).
+2. **Apple on-device = interim fallback only.** User explicitly flags quality
+   concern — "i'm afraid the on-device fallback is not good enough." Treat as
+   degraded mode pending provider research; label it loudly in UI (§ provenance).
+3. **Queued spike: research other free providers** (OpenRouter free models,
+   Groq, Cerebras, …) to become real alternate rungs in the chain — this is
+   the mitigation for both quota exhaustion and on-device quality.
+4. **Provenance = quality triage.** Every translation shows which model
+   produced it (already § provenance; reaffirmed): the user will review
+   labels and comment whether each model's quality is good enough —
+   especially `on-device` vs `gemini-3.8-flash` — and those judgments drive
+   chain ordering and the re-translate-with-next-model action.
+5. **Measure the real budget:** log 429 resets + daily request counts during
+   early real reading; decide on a 2nd Google project/key (key-level
+   rotation) only if measured usage exceeds one key's window.
 
 ### Translation provenance (decided 2026-10-21)
 
@@ -535,3 +566,21 @@ treat them as a normal code path, not an error.**
 **Spike item added:** simulate/observe a real challenge from an iOS client
 (WKWebView load of nhattruyenqq in the spike app) and prove the
 cookie-bridge path end-to-end before building the full source.
+
+**Spike result (2026-10-22): ✅ rung 2 proven end-to-end** (`cloudflare-spike/`).
+Fresh simulator (zero prior cookies) → hidden WKWebView loaded
+nhattruyenqq.com → cookies (`location`, `_ga`, `_ga_PJ0W4SDG1K`) harvested
+from `WKWebsiteDataStore.default().httpCookieStore` → bridged into
+`HTTPCookieStorage.shared` → outgoing URLSession request provably carried
+**all target-domain cookies + the WebView's exact `navigator.userAgent`**
+(verified with a header-logging `URLProtocol`) → real production endpoint
+`ChapterList?slug=fog-land` answered **200 + valid JSON (15.7 KB)** through
+the bridged session. Relaunch persistence re-verified (second run, no erase:
+same cookies, PASS). `cf_clearance` itself was `false` — no active wall at
+probe time (§11) — but the exact cookie path that would carry it is proven;
+`run.sh -TargetURL <any CF site>` replays the whole test against a real
+challenge when one is visible. Two production-critical gotchas learned:
+(a) capture the UA from inside the page (`navigator.userAgent`), never guess
+it — clearance cookies are UA+IP bound; (b) a custom `URLProtocol` in a
+session's `protocolClasses` **replaces** the system cookie auto-attach, so
+any future intercept/debug layer must re-attach cookies itself.

@@ -1,0 +1,30 @@
+name: CloudflareBridge
+options:
+  bundleIdPrefix: app.chimahon
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+
+targets:
+  CloudflareBridge:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+    info:
+      path: generated/Info.plist
+      properties:
+        CFBundleDisplayName: CF Bridge Spike
+        UILaunchScreen: {}
+        ITSAppUsesNonExemptEncryption: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.chimahon.spike.cloudflare
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: "NO"
+        CODE_SIGN_IDENTITY: ""
+        CODE_SIGNING_REQUIRED: "NO"
+        CODE_SIGNING_ALLOWED: "NO"

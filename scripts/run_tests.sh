@@ -10,7 +10,7 @@ ok()   { PASS=$((PASS+1)); echo "  ✅ $1"; }
 bad()  { FAIL=$((FAIL+1)); echo "  ❌ $1"; }
 skip() { SKIP=$((SKIP+1)); echo "  ⚠️  SKIP: $1"; }
 
-echo "== [1/3] OCR spike: Apple Vision on real fixtures =="
+echo "== [1/4] OCR spike: Apple Vision on real fixtures =="
 IMG=ocr-spike/images
 if [[ ! -f $IMG/fog60_100.png ]]; then
   skip "fixtures missing — run ocr-spike/images/fetch_images.sh first"
@@ -38,7 +38,7 @@ else
   fi
 fi
 
-echo "== [2/3] Translation spike: Gemini free tier =="
+echo "== [2/4] Translation spike: Gemini free tier =="
 if [[ -f translation-spike/.env ]]; then
   source translation-spike/.env
   CODE=$(curl -s -o /tmp/tgate.json -w "%{http_code}" --max-time 60 \
@@ -53,7 +53,12 @@ assert json.loads(t).get('ok') is True, 'payload'
 " 2>/dev/null; then
     ok "Gemini API reachable + JSON schema mode"
   elif [[ "$CODE" == "503" ]]; then
-    ok "Gemini 503 high-demand (expected throttling; failover path validated separately)"
+    bad "Gemini 503 high-demand — API not answering OK (blocks push; retry later)"
+  elif [[ "$CODE" == "429" ]]; then
+    HINT=$(grep -o 'Please retry in [^.]*' /tmp/tgate.json | head -1 || true)
+    bad "Gemini free-tier quota exhausted (429${HINT:+ — $HINT}) — blocks push until API recovers"
+  elif [[ "$CODE" == "000" ]]; then
+    bad "Gemini unreachable (curl HTTP 000) — network problem, API not answering OK (blocks push)"
   else
     bad "Gemini API gate failed (HTTP $CODE)"
   fi
@@ -69,7 +74,11 @@ assert 'full_translation' in j and 'word_by_word' in j and j['word_by_word'], 's
 " 2>/dev/null; then
     ok "explain-schema (full_translation + word_by_word) contract holds"
   elif [[ "$CODE2" == "503" ]]; then
-    ok "explain-schema call 503-throttled (contract verified in spike; retry is design)"
+    bad "explain-schema 503 high-demand — API not answering OK (blocks push; retry later)"
+  elif [[ "$CODE2" == "429" ]]; then
+    bad "explain-schema quota exhausted (429) — blocks push until API recovers"
+  elif [[ "$CODE2" == "000" ]]; then
+    bad "explain-schema unreachable (curl HTTP 000) — network problem, API not answering OK (blocks push)"
   else
     bad "explain-schema contract failed (HTTP $CODE2)"
   fi
@@ -77,7 +86,7 @@ else
   skip "translation-spike/.env missing (API tests) — copy .env.example and fill GEMINI_API_KEY"
 fi
 
-echo "== [3/3] Dictionary spike: chimahon-spike builds =="
+echo "== [3/4] Dictionary spike: chimahon-spike builds =="
 if [[ -d chimahon-spike/ChimahonSpike.xcodeproj ]]; then
   if xcodebuild -project chimahon-spike/ChimahonSpike.xcodeproj -scheme ChimahonSpike \
        -destination 'generic/platform=iOS Simulator' -derivedDataPath chimahon-spike/build \
@@ -89,6 +98,24 @@ if [[ -d chimahon-spike/ChimahonSpike.xcodeproj ]]; then
   fi
 else
   skip "chimahon-spike project missing"
+fi
+
+echo "== [4/4] Cloudflare spike: builds for iOS Simulator =="
+# Build-only by design: the LIVE bridge test (cloudflare-spike/run.sh, needs
+# simulator + live site) is run at spike time, not every gate — site downtime
+# must not block unrelated milestone pushes.
+if [[ -d cloudflare-spike/Sources ]]; then
+  if (cd cloudflare-spike && xcodegen generate >/dev/null 2>&1 && \
+      xcodebuild -project CloudflareBridge.xcodeproj -scheme CloudflareBridge \
+        -destination 'generic/platform=iOS Simulator' -derivedDataPath build \
+        build >/tmp/cfbridge_build.log 2>&1); then
+    ok "CloudflareBridge spike builds for iOS Simulator"
+  else
+    bad "CloudflareBridge spike build failed — see /tmp/cfbridge_build.log"
+    tail -5 /tmp/cfbridge_build.log
+  fi
+else
+  skip "cloudflare-spike missing"
 fi
 
 echo ""
