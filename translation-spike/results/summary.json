@@ -1,0 +1,14 @@
+[
+  {
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "payload": "vi",
+    "status": 503,
+    "schema_ok": false,
+    "detail": "http error",
+    "latency_s": 2.67,
+    "json_mode": true,
+    "usage": {},
+    "error": "This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later."
+  }
+]

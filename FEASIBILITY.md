@@ -321,9 +321,13 @@ confirmed viable.**
 - Key stored in `translation-spike/.env` (local only; pasted in chat →
   rotate via AI Studio if concerned).
 
-**Not yet validated** (next candidates): WKWebView Cloudflare cookie-bridge
-(§11.4 rung 2), CBZ reading + page rendering, KMP iOS target compilation of
-`domain`, AnkiConnect-based card creation.
+**Not yet validated** (next candidates): KMP iOS target compilation of
+`domain`, AnkiConnect-based card creation. ~~WKWebView Cloudflare
+cookie-bridge (§11.4 rung 2)~~ ✅ proven 2026-10-22; ~~CBZ reading + page
+rendering~~ ✅ proven 2026-10-22 (`cbz-spike/`: 24/24 pages byte-exact,
+open <1 ms, production downsampled decode 36 ms/page, lazy scroll UI —
+zero-dependency ZIP+zlib reader; two gotchas documented: renderer screen
+scale3× and lazy CGImage fake timings).
 
 ---
 

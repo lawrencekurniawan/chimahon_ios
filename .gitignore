@@ -37,3 +37,4 @@ xcuserdata/
 *.swp
 *~
 .simulator-udid
+gate_push_watcher.log

@@ -10,7 +10,7 @@ ok()   { PASS=$((PASS+1)); echo "  ✅ $1"; }
 bad()  { FAIL=$((FAIL+1)); echo "  ❌ $1"; }
 skip() { SKIP=$((SKIP+1)); echo "  ⚠️  SKIP: $1"; }
 
-echo "== [1/4] OCR spike: Apple Vision on real fixtures =="
+echo "== [1/5] OCR spike: Apple Vision on real fixtures =="
 IMG=ocr-spike/images
 if [[ ! -f $IMG/fog60_100.png ]]; then
   skip "fixtures missing — run ocr-spike/images/fetch_images.sh first"
@@ -38,55 +38,80 @@ else
   fi
 fi
 
-echo "== [2/4] Translation spike: Gemini free tier =="
+echo "== [2/5] Translation spike: Gemini free tier =="
 if [[ -f translation-spike/.env ]]; then
   source translation-spike/.env
-  CODE=$(curl -s -o /tmp/tgate.json -w "%{http_code}" --max-time 60 \
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d '{"contents":[{"parts":[{"text":"Return JSON only: {\"ok\": true}"}]}],"generationConfig":{"responseMimeType":"application/json"}}')
-  if [[ "$CODE" == "200" ]] && python3 -c "
+
+  # Bounded redial (2026-10-22): 503/000/429 at the edge are transient —
+  # the spike and probes observed success on redial within seconds, and a
+  # single-shot gate run got unlucky while the API answered 200 moments
+  # later. STRICT semantics unchanged: only an actual HTTP 200 with a valid
+  # payload can pass; retries redial transient statuses, never relax them.
+  gemini_call() { # $1=req-body file  $2=out file → sets CODE to LAST attempt
+    local body="$1" out="$2" attempt
+    CODE=000
+    for attempt in 1 2 3; do
+      CODE=$(curl -s -o "$out" -w "%{http_code}" --max-time 90 \
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
+        -H "Content-Type: application/json" -d @"$body")
+      case "$CODE" in
+        200) return 0 ;;
+        000|429|503) [[ $attempt -lt 3 ]] && sleep $((attempt * 5)) ;;
+        *) return 1 ;;  # non-transient status — redialing won't help
+      esac
+    done
+    return 1
+  }
+
+  classify_fail() { # $1=check name  $2=tempfile with error body
+    local name="$1" f="$2" hint
+    case "$CODE" in
+      503) bad "$name 503 high-demand after 3 redials — API not answering OK (blocks push)" ;;
+      429)
+        hint=$(grep -o 'Please retry in [^.]*' "$f" | head -1 || true)
+        bad "$name quota exhausted (429${hint:+ — $hint}) after 3 redials — blocks push until API recovers"
+        ;;
+      000) bad "$name unreachable (curl HTTP 000) after 3 redials — network problem, API not answering OK (blocks push)" ;;
+      *)   bad "$name gate failed (HTTP $CODE)" ;;
+    esac
+  }
+
+  printf '%s' '{"contents":[{"parts":[{"text":"Return JSON only: {\"ok\": true}"}]}],"generationConfig":{"responseMimeType":"application/json"}}' > /tmp/tgate_req.json
+  if gemini_call /tmp/tgate_req.json /tmp/tgate.json; then
+    if python3 -c "
 import json,sys
 d=json.load(open('/tmp/tgate.json'))
 t=d['candidates'][0]['content']['parts'][0]['text']
 assert json.loads(t).get('ok') is True, 'payload'
 " 2>/dev/null; then
-    ok "Gemini API reachable + JSON schema mode"
-  elif [[ "$CODE" == "503" ]]; then
-    bad "Gemini 503 high-demand — API not answering OK (blocks push; retry later)"
-  elif [[ "$CODE" == "429" ]]; then
-    HINT=$(grep -o 'Please retry in [^.]*' /tmp/tgate.json | head -1 || true)
-    bad "Gemini free-tier quota exhausted (429${HINT:+ — $HINT}) — blocks push until API recovers"
-  elif [[ "$CODE" == "000" ]]; then
-    bad "Gemini unreachable (curl HTTP 000) — network problem, API not answering OK (blocks push)"
+      ok "Gemini API reachable + JSON schema mode"
+    else
+      bad "Gemini replied 200 but JSON-mode payload invalid"
+    fi
   else
-    bad "Gemini API gate failed (HTTP $CODE)"
+    classify_fail "Gemini" /tmp/tgate.json
   fi
+
   # structured explain-schema smoke (the real pipeline contract)
-  CODE2=$(curl -s -o /tmp/tgate2.json -w "%{http_code}" --max-time 90 \
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
-    -H "Content-Type: application/json" -d @translation-spike/requests/req_vi.json)
-  if [[ "$CODE2" == "200" ]] && python3 -c "
+  if gemini_call translation-spike/requests/req_vi.json /tmp/tgate2.json; then
+    if python3 -c "
 import json,sys
 d=json.load(open('/tmp/tgate2.json'))
 j=json.loads(d['candidates'][0]['content']['parts'][0]['text'])
 assert 'full_translation' in j and 'word_by_word' in j and j['word_by_word'], 'schema'
 " 2>/dev/null; then
-    ok "explain-schema (full_translation + word_by_word) contract holds"
-  elif [[ "$CODE2" == "503" ]]; then
-    bad "explain-schema 503 high-demand — API not answering OK (blocks push; retry later)"
-  elif [[ "$CODE2" == "429" ]]; then
-    bad "explain-schema quota exhausted (429) — blocks push until API recovers"
-  elif [[ "$CODE2" == "000" ]]; then
-    bad "explain-schema unreachable (curl HTTP 000) — network problem, API not answering OK (blocks push)"
+      ok "explain-schema (full_translation + word_by_word) contract holds"
+    else
+      bad "explain-schema replied 200 but payload invalid"
+    fi
   else
-    bad "explain-schema contract failed (HTTP $CODE2)"
+    classify_fail "explain-schema" /tmp/tgate2.json
   fi
 else
   skip "translation-spike/.env missing (API tests) — copy .env.example and fill GEMINI_API_KEY"
 fi
 
-echo "== [3/4] Dictionary spike: chimahon-spike builds =="
+echo "== [3/5] Dictionary spike: chimahon-spike builds =="
 if [[ -d chimahon-spike/ChimahonSpike.xcodeproj ]]; then
   if xcodebuild -project chimahon-spike/ChimahonSpike.xcodeproj -scheme ChimahonSpike \
        -destination 'generic/platform=iOS Simulator' -derivedDataPath chimahon-spike/build \
@@ -100,7 +125,7 @@ else
   skip "chimahon-spike project missing"
 fi
 
-echo "== [4/4] Cloudflare spike: builds for iOS Simulator =="
+echo "== [4/5] Cloudflare spike: builds for iOS Simulator =="
 # Build-only by design: the LIVE bridge test (cloudflare-spike/run.sh, needs
 # simulator + live site) is run at spike time, not every gate — site downtime
 # must not block unrelated milestone pushes.
@@ -116,6 +141,21 @@ if [[ -d cloudflare-spike/Sources ]]; then
   fi
 else
   skip "cloudflare-spike missing"
+fi
+
+echo "== [5/5] CBZ spike: builds for iOS Simulator =="
+if [[ -d cbz-spike/Sources ]]; then
+  if (cd cbz-spike && xcodegen generate >/dev/null 2>&1 && \
+      xcodebuild -project CbzSpike.xcodeproj -scheme CbzSpike \
+        -destination 'generic/platform=iOS Simulator' -derivedDataPath build \
+        build >/tmp/cbz_build.log 2>&1); then
+    ok "CbzSpike spike builds for iOS Simulator"
+  else
+    bad "CbzSpike spike build failed — see /tmp/cbz_build.log"
+    tail -5 /tmp/cbz_build.log
+  fi
+else
+  skip "cbz-spike missing"
 fi
 
 echo ""

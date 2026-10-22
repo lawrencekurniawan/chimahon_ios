@@ -1,0 +1,14 @@
+{
+  "request_prompt": "Translate and explain this Vietnamese comic dialogue for an English-speaking learner. Return ONLY valid JSON with this schema: {\"full_translation\": string, \"word_by_word\": [{\"word\": string, \"reading_or_meaning\": string, \"grammar_note\": string}], \"tone_register_note\": string}. Context: post-apocalyptic webtoon, a character reminiscing.\n\nText: NHỮNG NGÀY ẤY VUI VẺ LẮM, CHẲNG AI ĐÁNH NHAU. MỌI NGƯỜI CHỈ HÁT HÒ, TRÒ CHUYỆN, RỒI CHIA NHAU NHỮNG MÓN NGON...",
+  "response_text": null,
+  "provider": "gemini",
+  "model": "gemini-3.8-flash",
+  "payload": "vi",
+  "status": 503,
+  "schema_ok": false,
+  "detail": "http error",
+  "latency_s": 2.67,
+  "json_mode": true,
+  "usage": {},
+  "error": "This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later."
+}
