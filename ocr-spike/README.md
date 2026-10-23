@@ -114,3 +114,94 @@ too expensive for bulk OCR on the free tier, perfect for occasional
 re-checks of flagged bubbles. Apple Vision stays primary (free, on-device,
 ~100 ms/page); LLM-vision is the fallback for anything Vision flags
 (low confidence, unusual style).
+
+## Comprehensive comparison (2026-10-22/23) — `compare/`
+
+User-requested head-to-head before locking the OCR engine: *is Apple Vision
+**truly** as accurate as LLM vision?* Answer: **equal on real dialogue
+(the deployment distribution); measurably worse on synthetic stress styles
+(1.71% CER vs 0.00%); and LLM vision has its own hallucination class.**
+Decision: **Apple Vision = default OCR engine; LLM vision = opt-in
+bubble-crop re-OCR only** (never full-page bulk).
+
+### Method
+
+- **Ground-truth corpus** (`gen_corpus.py` → `corpus/*.png` +
+  `manifest.json`): 18 comic-style 800×1500 pages with *known* text —
+  14 Vietnamese styles (regular, bold caps, italic caps, small 26px,
+  outlined SFX, diacritic-heavy, low contrast, busy background, serif
+  italic, drop shadow, mixed vi+en SFX, two blocks, quotes/isolated
+  diacritics, mixed caps) + 4 Korean (regular, faux-bold, small,
+  hanja+brackets). Deterministic, regenerable, committed manifest.
+- **Real track:** all 10 `images/fog60_*.png` fixtures (no ground truth →
+  engine-diff + adjudication by direct image read).
+- **Engines:** `VisionOCR/main.swift --json` (vi-VT / ko-KR, one language
+  per request) vs `run_gemini_vision.py` (Gemini 3.8 Flash, 4–6 images per
+  request, JSON-mode, `thinkingConfig.thinkingBudget: 0`, only HTTP 200
+  accepted, 503/429/timeout redialed ≤3, incremental save/resume, request
+  budget guard).
+- **Scoring** (`score.py`): NFC + whitespace-collapsed character error rate
+  (CER) vs ground truth, exact-match rate, Vision confidence calibration,
+  real-page normalized-text diff → `results/comparison.json`.
+
+### Results
+
+| Engine | Synthetic exact | Weighted CER | Real dialogue | Latency | Cost/failures |
+|---|---|---|---|---|---|
+| **Apple Vision** | 12/18 | 1.71% | **perfect (all pages)** | 109 ms/page | $0, offline, 0 transport errors |
+| **Gemini vision** | **18/18** | **0.00%** | **perfect (all pages)** | 5–50 s / 4–6-page batch | ~1.1K tokens/page, 503/429 redials needed |
+
+Vision's 6 misses (per-style in `results/comparison.json`):
+
+| Page | CER | Class | Ground truth → Vision |
+|---|---|---|---|
+| `ko_04_hanja_brackets` | 13.3% | **hanja (systematic)** | `春來秋去` → `좁까치초` |
+| `vi_11_sfx_mixed_en` | 12.5% | `!`→`I` heavy display | `VỤT!` → `VỤTI` |
+| `vi_02_bold_caps` | 11.8% | horn/tone merge + `!`→`I` | `ĐỦ RỒI!` → `ĐÙ RÒII` |
+| `vi_13_rare_chars` | 3.2% | cosmetic punctuation | `—` → `-`, one dropped space |
+| `vi_04_small` | 2.2% | tone at small size | `rồi` → `rôi` |
+| `vi_03_italic_stylized` | 1.6% | tone in italic caps | `HỒN` → `HÒN` |
+
+Fairness notes: (1) the faux-bold pages (`vi_02`, `vi_11`) are stroked
+faux-weight — deliberately harsher than typical lettering, and even a human
+read struggles with the merged diacritic stacks / fat `!` (Gemini resolved
+them with language knowledge, not better pixels); (2) real heavy bubbles
+(`fog60_80`, `fog60_100`) were **character-perfect for Vision**.
+
+Real-page adjudication (the 6 engine-diffs): dialogue identical-and-perfect
+everywhere. Remaining differences: watermark/credit lines (Gemini better —
+filtered from the product anyway), promo logo (Gemini correct
+`TRUYENQQQ.COM` vs Vision `TRUYENCCC.COM`), and brush-SFX art where
+**Gemini invented phantom Thai `ตึ้ง`** (fog60_3/4/5) while Vision returned
+empty — on fog60_4 (art-only) Vision is correct and Gemini false-positives.
+
+**Confidence calibration:** 5 of 6 Vision errors came back at conf=1.0
+(and one *correct* result at 0.75) → confidence filtering reliably kills
+watermarks (30–50%) but does **not** detect style misreads. Fallback
+triggering must be content-based/user-triggered, not confidence-gated.
+
+### Gotchas found while building the corpus
+
+1. **macOS `Arial Black` has no Vietnamese glyphs** → tofu □ (see
+   `font_coverage.png`); use Arial Bold + same-color stroke for heavy
+   weight. Arial/Italic/BoldItalic/Times/Arial Unicode: full coverage.
+2. **Auto-fit guard is mandatory**: 8/18 pages silently clipped past the
+   right edge before the guard (clipped text = poisoned ground truth).
+3. **Gemini latency was thinking, not quota**: default thinking took 110 s
+   per 5-image batch (urllib timed out at 120 s); `thinkingBudget: 0` →
+   5–50 s. Timeouts must not be mistaken for 429s.
+4. Vision reads `!` as `I` in heavy display fonts; reads em-dash as hyphen.
+
+### Reproduce
+
+```sh
+cd ocr-spike/compare
+python3 -m venv venv && ./venv/bin/pip install pillow
+./venv/bin/python gen_corpus.py
+(cd ../VisionOCR && swift main.swift --lang vi-VT --json \
+    ../compare/results/vision_vi.json ../compare/corpus/vi_*.png)
+(cd ../VisionOCR && swift main.swift --lang ko-KR --json \
+    ../compare/results/vision_ko.json ../compare/corpus/ko_*.png)
+./venv/bin/python run_gemini_vision.py    # needs GEMINI_API_KEY (quota!)
+./venv/bin/python score.py                # → results/comparison.json
+```

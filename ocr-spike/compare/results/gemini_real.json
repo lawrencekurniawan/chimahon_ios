@@ -1,0 +1,102 @@
+[
+ {
+  "file": "fog60_0.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/../images/fog60_0.png",
+  "text": "CẬP NHẬT CHƯƠNG MỚI SỚM NHẤT TẠI WEBSITE\nTRUYENQQQ.COM\nTRUY CẬP NGAY TRUYENQQQ.COM ĐỂ ỦNG HỘ NHÓM DỊCH\nThực hiện bởi\nDichTruyenAl.com\nDichTruyen Al.com\nKayn\nScans\nCHAPTER 60 IS NOW\nAVAILABLE AND YOU CAN READ\nIT ON OUR WEBSITE\ndiscord.gg/UvphMFDTwf\nKaynScans.com\nKAYNSCANS\nQUALITY PASSION SCANS",
+  "model": "gemini-3.8-flash",
+  "ms": 12512,
+  "batch": 1,
+  "prompt_tokens": 4480,
+  "output_tokens": 393
+ },
+ {
+  "file": "fog60_1.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/../images/fog60_1.png",
+  "text": "We invite you to join our\nCommunity Discord server\nfor the latest updates,\nyour Support is Needed!\ndsc.gg/qY92MchkD4\nKAYNSCANS.COM\nThis Chapter of the posted Series was provided to you by this site's Team\nAll translations Credits goes to Kaynscans.",
+  "model": "gemini-3.8-flash",
+  "ms": 12512,
+  "batch": 1,
+  "prompt_tokens": 4480,
+  "output_tokens": 393
+ },
+ {
+  "file": "fog60_100.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/../images/fog60_100.png",
+  "text": "Thực hiện bởi\nDich TruyenAl.com\nCÔ ẤY DẦN NHẬN\nRA NƠI NÀY TỒI\nTỆ ĐẾN MỨC NÀO.\nSỰ TỒN TẠI CỦA\nFOG, MÔI TRƯỜNG\nCHÀ ĐẠP ĐẠO ĐỨC...",
+  "model": "gemini-3.8-flash",
+  "ms": 12512,
+  "batch": 1,
+  "prompt_tokens": 4480,
+  "output_tokens": 393
+ },
+ {
+  "file": "fog60_2.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/../images/fog60_2.png",
+  "text": "",
+  "model": "gemini-3.8-flash",
+  "ms": 12512,
+  "batch": 1,
+  "prompt_tokens": 4480,
+  "output_tokens": 393
+ },
+ {
+  "file": "fog60_3.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/../images/fog60_3.png",
+  "text": "Thực hiện bởi\nDichTruyenAI.com\nREAD THIS SERIES AT\nKAYNSCANS.COM\nTO SUPPORT US!\nตึ้ง",
+  "model": "gemini-3.8-flash",
+  "ms": 3665,
+  "batch": 2,
+  "prompt_tokens": 4462,
+  "output_tokens": 143
+ },
+ {
+  "file": "fog60_4.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/../images/fog60_4.png",
+  "text": "ตึ้ง",
+  "model": "gemini-3.8-flash",
+  "ms": 3665,
+  "batch": 2,
+  "prompt_tokens": 4462,
+  "output_tokens": 143
+ },
+ {
+  "file": "fog60_40.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/../images/fog60_40.png",
+  "text": "",
+  "model": "gemini-3.8-flash",
+  "ms": 3665,
+  "batch": 2,
+  "prompt_tokens": 4462,
+  "output_tokens": 143
+ },
+ {
+  "file": "fog60_5.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/../images/fog60_5.png",
+  "text": "Thực hiện bởi\nDichTruyenAl.com\nตึ้ง",
+  "model": "gemini-3.8-flash",
+  "ms": 3665,
+  "batch": 2,
+  "prompt_tokens": 4462,
+  "output_tokens": 143
+ },
+ {
+  "file": "fog60_60.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/../images/fog60_60.png",
+  "text": "CẢNH ĐẸP\nMÊ HỒN\nCHO ĐÔI TA,",
+  "model": "gemini-3.8-flash",
+  "ms": 10691,
+  "batch": 3,
+  "prompt_tokens": 2277,
+  "output_tokens": 150
+ },
+ {
+  "file": "fog60_80.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/../images/fog60_80.png",
+  "text": "Thực hiện bởi\nDichTruyenAI.com\nNHỮNG NGÀY\nẤY VUI VẺ LẮM, CHẲNG\nAI ĐÁNH NHAU.\nMỌI NGƯỜI CHỈ HÁT\nHÒ, TRÒ CHUYỆN, RỒI\nCHIA NHAU NHỮNG\nMÓN NGON...",
+  "model": "gemini-3.8-flash",
+  "ms": 10691,
+  "batch": 3,
+  "prompt_tokens": 2277,
+  "output_tokens": 150
+ }
+]

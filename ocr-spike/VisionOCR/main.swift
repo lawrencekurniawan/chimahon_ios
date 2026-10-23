@@ -10,9 +10,12 @@ import AppKit
 
 var langs = ["vi-VT"]
 var files: [String] = []
+var jsonOut: String? = nil
 var it = CommandLine.arguments.dropFirst().makeIterator()
 while let a = it.next() {
-    if a == "--lang", let v = it.next() { langs = [v] } else { files.append(a) }
+    if a == "--lang", let v = it.next() { langs = [v] }
+    else if a == "--json", let v = it.next() { jsonOut = v }
+    else { files.append(a) }
 }
 
 func printSupportedLanguages() {
@@ -59,6 +62,8 @@ func ocr(url: URL) throws -> [Line] {
 
 printSupportedLanguages()
 
+var jsonResults: [[String: Any]] = []
+
 for path in files {
     let url = URL(fileURLWithPath: path)
     print("\n===== \(url.lastPathComponent) =====")
@@ -71,7 +76,31 @@ for path in files {
             let pct = Int(l.confidence * 100)
             print(String(format: "  [%3d%%] y=%.3f  %@", pct, l.box.maxY, l.text))
         }
+        jsonResults.append([
+            "path": path,
+            "file": url.lastPathComponent,
+            "lang": langs.joined(separator: ","),
+            "ms": ms,
+            "lines": lines.map {
+                ["text": $0.text,
+                 "confidence": Double($0.confidence),
+                 "y": Double($0.box.maxY)]
+            },
+        ])
     } catch {
         print("ERROR: \(error)")
+        jsonResults.append([
+            "path": path,
+            "file": url.lastPathComponent,
+            "lang": langs.joined(separator: ","),
+            "error": "\(error)",
+        ])
     }
+}
+
+if let jsonOut {
+    let data = try JSONSerialization.data(withJSONObject: jsonResults,
+                                          options: [.prettyPrinted, .sortedKeys])
+    try data.write(to: URL(fileURLWithPath: jsonOut))
+    print("\njson written: \(jsonOut) (\(jsonResults.count) files)")
 }

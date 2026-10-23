@@ -1,0 +1,386 @@
+{
+ "engines": {
+  "apple-vision": {
+   "exact": 12,
+   "n": 18,
+   "weighted_cer": 0.017064846416382253,
+   "rows": [
+    {
+     "id": "vi_01_regular",
+     "style": "regular",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Tôi sẽ không bao giờ bỏ cuộc.\nDù cho có khó khăn đến đâu.",
+     "conf": 1.0,
+     "ms": 1620
+    },
+    {
+     "id": "vi_02_bold_caps",
+     "style": "bold/allcaps",
+     "cer_flow": 0.11764705882352941,
+     "cer_lines": 0.11764705882352941,
+     "exact": false,
+     "hyp": "ĐÙ RÒII\nTA SẼ KHÔNG CHỊU THỪA NỮAI",
+     "conf": 1.0,
+     "ms": 77
+    },
+    {
+     "id": "vi_03_italic_stylized",
+     "style": "bold-italic caps",
+     "cer_flow": 0.016129032258064516,
+     "cer_lines": 0.016129032258064516,
+     "exact": false,
+     "hyp": "CẢNH ĐẸP MÊ HÒN CHO ĐỜI TA,\nCHƠI VỜI BÊN NHỮNG NGƯỜI THÂN YÊU.",
+     "conf": 1.0,
+     "ms": 103
+    },
+    {
+     "id": "vi_04_small",
+     "style": "small font (26px/800px)",
+     "cer_flow": 0.022222222222222223,
+     "cer_lines": 0.022222222222222223,
+     "exact": false,
+     "hyp": "Ừ, tao biết rôi.\nMày đừng lo, tao tự lo được.",
+     "conf": 1.0,
+     "ms": 82
+    },
+    {
+     "id": "vi_05_outline_sfx",
+     "style": "outlined SFX",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "BỐP!\nRẦM!",
+     "conf": 1.0,
+     "ms": 69
+    },
+    {
+     "id": "vi_06_diacritic_heavy",
+     "style": "diacritic-heavy",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Tôi ước gì được gặp lại những ngày xưa,\nnghĩa là phải chấp nhận tất cả những gì xảy ra.\nĐường ướt, giấy lộn, học phí cứ tăng mãi.",
+     "conf": 1.0,
+     "ms": 112
+    },
+    {
+     "id": "vi_07_low_contrast",
+     "style": "low contrast",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Con đường này dẫn đến đâu?\nChẳng ai trả lời tôi cả.",
+     "conf": 1.0,
+     "ms": 85
+    },
+    {
+     "id": "vi_08_busy_bg",
+     "style": "text on busy background",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Cẩn thận! Có chuyện gì đó rồi!\nMau chạy đi, ngay bây giờ!",
+     "conf": 1.0,
+     "ms": 95
+    },
+    {
+     "id": "vi_09_serif_italic",
+     "style": "serif italic",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Một thoáng ký ức trôi qua...\nnhư làn khói mỏng ban mai.",
+     "conf": 1.0,
+     "ms": 82
+    },
+    {
+     "id": "vi_10_drop_shadow",
+     "style": "drop shadow",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "ĐẾN LÚC PHẢI QUYẾT ĐỊNH RỒI.\nKHÔNG CÒN LỰA CHỌN NỮA.",
+     "conf": 1.0,
+     "ms": 82
+    },
+    {
+     "id": "vi_11_sfx_mixed_en",
+     "style": "SFX mixed vi+en",
+     "cer_flow": 0.125,
+     "cer_lines": 0.125,
+     "exact": false,
+     "hyp": "VỤTI WHOOSH~\nĐINHI PENGI",
+     "conf": 1.0,
+     "ms": 72
+    },
+    {
+     "id": "vi_12_two_blocks",
+     "style": "two dialogue blocks",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Ở trên kia nhìn xuống,\nta thấy cả thế giới.\nCòn ở dưới này,\nchỉ toàn là bóng tối.",
+     "conf": 1.0,
+     "ms": 96
+    },
+    {
+     "id": "vi_13_rare_chars",
+     "style": "quotes/isolated diacritics",
+     "cer_flow": 0.03225806451612903,
+     "cer_lines": 0.03225806451612903,
+     "exact": false,
+     "hyp": "«Đường về» - câu chuyện của riêng ta.\nĐ ơ ấữ ợ nhỉ? Đúng vậy!",
+     "conf": 1.0,
+     "ms": 91
+    },
+    {
+     "id": "vi_14_mixed_en_caps",
+     "style": "mixed en/vn caps",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "STOP RIGHT THERE!\nĐỪNG CÓ DI CHUYỂN!",
+     "conf": 1.0,
+     "ms": 82
+    },
+    {
+     "id": "ko_01_regular",
+     "style": "regular",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "안녕하세요, 오늘 날씨가 정말 좋네요!\n너희들은 어디로 가고 있어요?",
+     "conf": 1.0,
+     "ms": 390
+    },
+    {
+     "id": "ko_02_bold",
+     "style": "bold (stroke-simulated)",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "이제 더 이상 참을 수 없다!\n준비됐어? 다 같이 가자!",
+     "conf": 0.75,
+     "ms": 121
+    },
+    {
+     "id": "ko_03_small",
+     "style": "small font (24px)",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "조금만 더 가면 다 왔어.\n힘내자, 곧 도착해.",
+     "conf": 1.0,
+     "ms": 100
+    },
+    {
+     "id": "ko_04_hanja_brackets",
+     "style": "hanja + brackets",
+     "cer_flow": 0.13333333333333333,
+     "cer_lines": 0.13333333333333333,
+     "exact": false,
+     "hyp": "좁까치초, 시간은 흐른다.\n「그래도 우리는 여기 있어」",
+     "conf": 0.75,
+     "ms": 110
+    }
+   ]
+  },
+  "gemini-vision": {
+   "exact": 18,
+   "n": 18,
+   "weighted_cer": 0.0,
+   "rows": [
+    {
+     "id": "vi_01_regular",
+     "style": "regular",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Tôi sẽ không bao giờ bỏ cuộc.\nDù cho có khó khăn đến đâu.",
+     "conf": null,
+     "ms": 22015
+    },
+    {
+     "id": "vi_02_bold_caps",
+     "style": "bold/allcaps",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "ĐỦ RỒI!\nTA SẼ KHÔNG CHỊU THỪA NỮA!",
+     "conf": null,
+     "ms": 22015
+    },
+    {
+     "id": "vi_03_italic_stylized",
+     "style": "bold-italic caps",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "CẢNH ĐẸP MÊ HỒN CHO ĐỜI TA,\nCHƠI VỜI BÊN NHỮNG NGƯỜI THÂN YÊU.",
+     "conf": null,
+     "ms": 22015
+    },
+    {
+     "id": "vi_04_small",
+     "style": "small font (26px/800px)",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Ừ, tao biết rồi.\nMày đừng lo, tao tự lo được.",
+     "conf": null,
+     "ms": 22015
+    },
+    {
+     "id": "vi_05_outline_sfx",
+     "style": "outlined SFX",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "BỐP!\nRẦM!",
+     "conf": null,
+     "ms": 22015
+    },
+    {
+     "id": "vi_06_diacritic_heavy",
+     "style": "diacritic-heavy",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Tôi ước gì được gặp lại những ngày xưa,\nnghĩa là phải chấp nhận tất cả những gì xảy ra.\nĐường ướt, giấy lộn, học phí cứ tăng mãi.",
+     "conf": null,
+     "ms": 1784
+    },
+    {
+     "id": "vi_07_low_contrast",
+     "style": "low contrast",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Con đường này dẫn đến đâu?\nChẳng ai trả lời tôi cả.",
+     "conf": null,
+     "ms": 1784
+    },
+    {
+     "id": "vi_08_busy_bg",
+     "style": "text on busy background",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Cẩn thận! Có chuyện gì đó rồi!\nMau chạy đi, ngay bây giờ!",
+     "conf": null,
+     "ms": 1784
+    },
+    {
+     "id": "vi_09_serif_italic",
+     "style": "serif italic",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Một thoáng ký ức trôi qua...\nnhư làn khói mỏng ban mai.",
+     "conf": null,
+     "ms": 1784
+    },
+    {
+     "id": "vi_10_drop_shadow",
+     "style": "drop shadow",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "ĐẾN LÚC PHẢI QUYẾT ĐỊNH RỒI.\nKHÔNG CÒN LỰA CHỌN NỮA.",
+     "conf": null,
+     "ms": 1784
+    },
+    {
+     "id": "vi_11_sfx_mixed_en",
+     "style": "SFX mixed vi+en",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "VỤT! WHOOSH~\nĐINH! PENG!",
+     "conf": null,
+     "ms": 4239
+    },
+    {
+     "id": "vi_12_two_blocks",
+     "style": "two dialogue blocks",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "Ở trên kia nhìn xuống,\nta thấy cả thế giới.\nCòn ở dưới này,\nchỉ toàn là bóng tối.",
+     "conf": null,
+     "ms": 4239
+    },
+    {
+     "id": "vi_13_rare_chars",
+     "style": "quotes/isolated diacritics",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "«Đường về» — câu chuyện của riêng ta.\nĐ ơ ấ ữ ợ nhỉ? Đúng vậy!",
+     "conf": null,
+     "ms": 4239
+    },
+    {
+     "id": "vi_14_mixed_en_caps",
+     "style": "mixed en/vn caps",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "STOP RIGHT THERE!\nĐỪNG CÓ DI CHUYỂN!",
+     "conf": null,
+     "ms": 4239
+    },
+    {
+     "id": "ko_01_regular",
+     "style": "regular",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "안녕하세요, 오늘 날씨가 정말 좋네요!\n너희들은 어디로 가고 있어요?",
+     "conf": null,
+     "ms": 4239
+    },
+    {
+     "id": "ko_02_bold",
+     "style": "bold (stroke-simulated)",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "이제 더 이상 참을 수 없다!\n준비됐어? 다 같이 가자!",
+     "conf": null,
+     "ms": 1795
+    },
+    {
+     "id": "ko_03_small",
+     "style": "small font (24px)",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "조금만 더 가면 다 왔어.\n힘내자, 곧 도착해.",
+     "conf": null,
+     "ms": 1795
+    },
+    {
+     "id": "ko_04_hanja_brackets",
+     "style": "hanja + brackets",
+     "cer_flow": 0.0,
+     "cer_lines": 0.0,
+     "exact": true,
+     "hyp": "春來秋去, 시간은 흐른다.\n「그래도 우리는 여기 있어」",
+     "conf": null,
+     "ms": 1795
+    }
+   ]
+  }
+ },
+ "disagreements": [
+  "fog60_0.png",
+  "fog60_100.png",
+  "fog60_3.png",
+  "fog60_4.png",
+  "fog60_5.png",
+  "fog60_80.png"
+ ]
+}

@@ -1,0 +1,128 @@
+[
+ {
+  "id": "vi_01_regular",
+  "file": "corpus/vi_01_regular.png",
+  "lang": "vi-VT",
+  "style": "regular",
+  "text": "Tôi sẽ không bao giờ bỏ cuộc.\nDù cho có khó khăn đến đâu."
+ },
+ {
+  "id": "vi_02_bold_caps",
+  "file": "corpus/vi_02_bold_caps.png",
+  "lang": "vi-VT",
+  "style": "bold/allcaps",
+  "text": "ĐỦ RỒI!\nTA SẼ KHÔNG CHỊU THỪA NỮA!"
+ },
+ {
+  "id": "vi_03_italic_stylized",
+  "file": "corpus/vi_03_italic_stylized.png",
+  "lang": "vi-VT",
+  "style": "bold-italic caps",
+  "text": "CẢNH ĐẸP MÊ HỒN CHO ĐỜI TA,\nCHƠI VỜI BÊN NHỮNG NGƯỜI THÂN YÊU."
+ },
+ {
+  "id": "vi_04_small",
+  "file": "corpus/vi_04_small.png",
+  "lang": "vi-VT",
+  "style": "small font (26px/800px)",
+  "text": "Ừ, tao biết rồi.\nMày đừng lo, tao tự lo được."
+ },
+ {
+  "id": "vi_05_outline_sfx",
+  "file": "corpus/vi_05_outline_sfx.png",
+  "lang": "vi-VT",
+  "style": "outlined SFX",
+  "text": "BỐP!\nRẦM!"
+ },
+ {
+  "id": "vi_06_diacritic_heavy",
+  "file": "corpus/vi_06_diacritic_heavy.png",
+  "lang": "vi-VT",
+  "style": "diacritic-heavy",
+  "text": "Tôi ước gì được gặp lại những ngày xưa,\nnghĩa là phải chấp nhận tất cả những gì xảy ra.\nĐường ướt, giấy lộn, học phí cứ tăng mãi."
+ },
+ {
+  "id": "vi_07_low_contrast",
+  "file": "corpus/vi_07_low_contrast.png",
+  "lang": "vi-VT",
+  "style": "low contrast",
+  "text": "Con đường này dẫn đến đâu?\nChẳng ai trả lời tôi cả."
+ },
+ {
+  "id": "vi_08_busy_bg",
+  "file": "corpus/vi_08_busy_bg.png",
+  "lang": "vi-VT",
+  "style": "text on busy background",
+  "text": "Cẩn thận! Có chuyện gì đó rồi!\nMau chạy đi, ngay bây giờ!"
+ },
+ {
+  "id": "vi_09_serif_italic",
+  "file": "corpus/vi_09_serif_italic.png",
+  "lang": "vi-VT",
+  "style": "serif italic",
+  "text": "Một thoáng ký ức trôi qua...\nnhư làn khói mỏng ban mai."
+ },
+ {
+  "id": "vi_10_drop_shadow",
+  "file": "corpus/vi_10_drop_shadow.png",
+  "lang": "vi-VT",
+  "style": "drop shadow",
+  "text": "ĐẾN LÚC PHẢI QUYẾT ĐỊNH RỒI.\nKHÔNG CÒN LỰA CHỌN NỮA."
+ },
+ {
+  "id": "vi_11_sfx_mixed_en",
+  "file": "corpus/vi_11_sfx_mixed_en.png",
+  "lang": "vi-VT",
+  "style": "SFX mixed vi+en",
+  "text": "VỤT! WHOOSH~\nĐINH! PENG!"
+ },
+ {
+  "id": "vi_12_two_blocks",
+  "file": "corpus/vi_12_two_blocks.png",
+  "lang": "vi-VT",
+  "style": "two dialogue blocks",
+  "text": "Ở trên kia nhìn xuống,\nta thấy cả thế giới.\nCòn ở dưới này,\nchỉ toàn là bóng tối."
+ },
+ {
+  "id": "vi_13_rare_chars",
+  "file": "corpus/vi_13_rare_chars.png",
+  "lang": "vi-VT",
+  "style": "quotes/isolated diacritics",
+  "text": "«Đường về» — câu chuyện của riêng ta.\nĐ ơ ấ ữ ợ nhỉ? Đúng vậy!"
+ },
+ {
+  "id": "vi_14_mixed_en_caps",
+  "file": "corpus/vi_14_mixed_en_caps.png",
+  "lang": "vi-VT",
+  "style": "mixed en/vn caps",
+  "text": "STOP RIGHT THERE!\nĐỪNG CÓ DI CHUYỂN!"
+ },
+ {
+  "id": "ko_01_regular",
+  "file": "corpus/ko_01_regular.png",
+  "lang": "ko-KR",
+  "style": "regular",
+  "text": "안녕하세요, 오늘 날씨가 정말 좋네요!\n너희들은 어디로 가고 있어요?"
+ },
+ {
+  "id": "ko_02_bold",
+  "file": "corpus/ko_02_bold.png",
+  "lang": "ko-KR",
+  "style": "bold (stroke-simulated)",
+  "text": "이제 더 이상 참을 수 없다!\n준비됐어? 다 같이 가자!"
+ },
+ {
+  "id": "ko_03_small",
+  "file": "corpus/ko_03_small.png",
+  "lang": "ko-KR",
+  "style": "small font (24px)",
+  "text": "조금만 더 가면 다 왔어.\n힘내자, 곧 도착해."
+ },
+ {
+  "id": "ko_04_hanja_brackets",
+  "file": "corpus/ko_04_hanja_brackets.png",
+  "lang": "ko-KR",
+  "style": "hanja + brackets",
+  "text": "春來秋去, 시간은 흐른다.\n「그래도 우리는 여기 있어」"
+ }
+]

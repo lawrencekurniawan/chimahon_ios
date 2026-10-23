@@ -293,6 +293,50 @@ enough to be primary.**
   one-pass "OCR+translate+explain" fallback path and that free-tier
   throttling is absorbed by the same failover retry loop.
 
+**Comprehensive OCR comparison** (2026-10-22/23, `ocr-spike/compare/`,
+user-requested before locking the OCR engine): ✅ **Apple Vision locked as
+the OCR engine — with a measured, documented accuracy gap vs LLM vision.**
+
+- Method: 18-page synthetic **ground-truth corpus** (14 Vietnamese styles —
+  bold/italic/outline/small/diacritic-heavy/low-contrast/busy-bg/serif/
+  shadow/SFX/two-blocks/rare-chars/mixed-en — + 4 Korean incl. hanja),
+  rendered with a clipped-line fit-guard and a font-coverage check (macOS
+  **Arial Black lacks Vietnamese** → tofu boxes; heavy weight faked via
+  stroke), plus all 10 real Fog Land fixtures. Vision scored as CER vs known
+  text; Gemini run batched multi-image (4–6 imgs/req, `thinkingBudget: 0`
+  → 5–50 s/req vs 110 s with thinking; only HTTP 200 accepted, 503/429
+  redialed). Every engine disagreement on real pages was adjudicated by
+  direct image read.
+- **Synthetic (ground truth): Gemini 18/18 exact, CER 0.00% vs Vision
+  12/18 exact, CER 1.71%.** Vision failure classes: (1) hanja →
+  Hangul-shaped garbage (`春來秋去` → `좁까치초`) — Korean-only, systematic;
+  (2) heavy/faux-bold lettering: horn/tone merges (`ĐỦ`→`ĐÙ`,
+  `HỒN`→`HÒN`, `rồi`→`rôi`) and `!`→`I` (`VỤT!`→`VỤTI`) — the faux-bold
+  fixtures are deliberately harsher than typical lettering (real heavy
+  bubbles were perfect, below); (3) cosmetic: em-dash→hyphen, one dropped
+  space.
+- **Real pages: both engines perfect on every dialogue bubble** (the
+  deployment distribution). Disagreements were: watermark/credit lines
+  (Gemini reads better — irrelevant, filtered by design), promo logo
+  (Gemini correct `TRUYENQQQ.COM` vs Vision `TRUYENCCC.COM`), and
+  decorative brush SFX where **Gemini hallucinated phantom Thai `ตึ้ง` from
+  the artwork while Vision correctly returned empty** (fog60_4: Vision
+  right, Gemini false-positive).
+- **Confidence is miscalibrated:** 5 of 6 Vision errors returned
+  conf=1.0 (and one *correct* page at 0.75) → confidence filtering kills
+  watermarks (30–50%) but does **not** flag style misreads. Do not gate
+  any fallback on confidence alone.
+- Ops: Vision 109 ms/page, $0, offline, zero transport failures vs Gemini
+  ~1.1K tokens/page (100-page chapter ≈ 110K tokens — would consume the
+  translation quota), network-bound, 503/429 variance.
+- **Decision:** Apple Vision = default OCR engine — equal accuracy where it
+  matters (real dialogue), unlimited/free/fast/private, LLM budget stays
+  100% for translation. LLM vision = **opt-in bubble-crop re-OCR only**
+  (its 18/18 proves crop-level reads are gold standard when a user flags a
+  bad bubble; never full-page bulk). Hanja flagged as a known limitation
+  for future Korean sources. Details, per-style table, reproduce steps:
+  `ocr-spike/README.md`.
+
 **Spike 4 — Gemini free-tier translation chain** (2026-10-21,
 `translation-spike/`, real Google AI Studio key): ✅ **zero-cost engine
 confirmed viable.**

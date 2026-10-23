@@ -38,3 +38,7 @@ xcuserdata/
 *~
 .simulator-udid
 gate_push_watcher.log
+
+# --- OCR comparison (regenerable corpus + local venv) ---
+ocr-spike/compare/corpus/
+ocr-spike/compare/venv/

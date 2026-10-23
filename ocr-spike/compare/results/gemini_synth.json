@@ -1,0 +1,182 @@
+[
+ {
+  "file": "vi_01_regular.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_01_regular.png",
+  "text": "Tôi sẽ không bao giờ bỏ cuộc.\nDù cho có khó khăn đến đâu.",
+  "model": "gemini-3.8-flash",
+  "ms": 22015,
+  "batch": 1,
+  "prompt_tokens": 5545,
+  "output_tokens": 167
+ },
+ {
+  "file": "vi_02_bold_caps.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_02_bold_caps.png",
+  "text": "ĐỦ RỒI!\nTA SẼ KHÔNG CHỊU THỪA NỮA!",
+  "model": "gemini-3.8-flash",
+  "ms": 22015,
+  "batch": 1,
+  "prompt_tokens": 5545,
+  "output_tokens": 167
+ },
+ {
+  "file": "vi_03_italic_stylized.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_03_italic_stylized.png",
+  "text": "CẢNH ĐẸP MÊ HỒN CHO ĐỜI TA,\nCHƠI VỜI BÊN NHỮNG NGƯỜI THÂN YÊU.",
+  "model": "gemini-3.8-flash",
+  "ms": 22015,
+  "batch": 1,
+  "prompt_tokens": 5545,
+  "output_tokens": 167
+ },
+ {
+  "file": "vi_04_small.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_04_small.png",
+  "text": "Ừ, tao biết rồi.\nMày đừng lo, tao tự lo được.",
+  "model": "gemini-3.8-flash",
+  "ms": 22015,
+  "batch": 1,
+  "prompt_tokens": 5545,
+  "output_tokens": 167
+ },
+ {
+  "file": "vi_05_outline_sfx.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_05_outline_sfx.png",
+  "text": "BỐP!\nRẦM!",
+  "model": "gemini-3.8-flash",
+  "ms": 22015,
+  "batch": 1,
+  "prompt_tokens": 5545,
+  "output_tokens": 167
+ },
+ {
+  "file": "vi_06_diacritic_heavy.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_06_diacritic_heavy.png",
+  "text": "Tôi ước gì được gặp lại những ngày xưa,\nnghĩa là phải chấp nhận tất cả những gì xảy ra.\nĐường ướt, giấy lộn, học phí cứ tăng mãi.",
+  "model": "gemini-3.8-flash",
+  "ms": 1784,
+  "batch": 1,
+  "prompt_tokens": 5545,
+  "output_tokens": 236
+ },
+ {
+  "file": "vi_07_low_contrast.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_07_low_contrast.png",
+  "text": "Con đường này dẫn đến đâu?\nChẳng ai trả lời tôi cả.",
+  "model": "gemini-3.8-flash",
+  "ms": 1784,
+  "batch": 1,
+  "prompt_tokens": 5545,
+  "output_tokens": 236
+ },
+ {
+  "file": "vi_08_busy_bg.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_08_busy_bg.png",
+  "text": "Cẩn thận! Có chuyện gì đó rồi!\nMau chạy đi, ngay bây giờ!",
+  "model": "gemini-3.8-flash",
+  "ms": 1784,
+  "batch": 1,
+  "prompt_tokens": 5545,
+  "output_tokens": 236
+ },
+ {
+  "file": "vi_09_serif_italic.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_09_serif_italic.png",
+  "text": "Một thoáng ký ức trôi qua...\nnhư làn khói mỏng ban mai.",
+  "model": "gemini-3.8-flash",
+  "ms": 1784,
+  "batch": 1,
+  "prompt_tokens": 5545,
+  "output_tokens": 236
+ },
+ {
+  "file": "vi_10_drop_shadow.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_10_drop_shadow.png",
+  "text": "ĐẾN LÚC PHẢI QUYẾT ĐỊNH RỒI.\nKHÔNG CÒN LỰA CHỌN NỮA.",
+  "model": "gemini-3.8-flash",
+  "ms": 1784,
+  "batch": 1,
+  "prompt_tokens": 5545,
+  "output_tokens": 236
+ },
+ {
+  "file": "vi_11_sfx_mixed_en.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_11_sfx_mixed_en.png",
+  "text": "VỤT! WHOOSH~\nĐINH! PENG!",
+  "model": "gemini-3.8-flash",
+  "ms": 4239,
+  "batch": 2,
+  "prompt_tokens": 5545,
+  "output_tokens": 206
+ },
+ {
+  "file": "vi_12_two_blocks.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_12_two_blocks.png",
+  "text": "Ở trên kia nhìn xuống,\nta thấy cả thế giới.\nCòn ở dưới này,\nchỉ toàn là bóng tối.",
+  "model": "gemini-3.8-flash",
+  "ms": 4239,
+  "batch": 2,
+  "prompt_tokens": 5545,
+  "output_tokens": 206
+ },
+ {
+  "file": "vi_13_rare_chars.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_13_rare_chars.png",
+  "text": "«Đường về» — câu chuyện của riêng ta.\nĐ ơ ấ ữ ợ nhỉ? Đúng vậy!",
+  "model": "gemini-3.8-flash",
+  "ms": 4239,
+  "batch": 2,
+  "prompt_tokens": 5545,
+  "output_tokens": 206
+ },
+ {
+  "file": "vi_14_mixed_en_caps.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/vi_14_mixed_en_caps.png",
+  "text": "STOP RIGHT THERE!\nĐỪNG CÓ DI CHUYỂN!",
+  "model": "gemini-3.8-flash",
+  "ms": 4239,
+  "batch": 2,
+  "prompt_tokens": 5545,
+  "output_tokens": 206
+ },
+ {
+  "file": "ko_01_regular.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/ko_01_regular.png",
+  "text": "안녕하세요, 오늘 날씨가 정말 좋네요!\n너희들은 어디로 가고 있어요?",
+  "model": "gemini-3.8-flash",
+  "ms": 4239,
+  "batch": 2,
+  "prompt_tokens": 5545,
+  "output_tokens": 206
+ },
+ {
+  "file": "ko_02_bold.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/ko_02_bold.png",
+  "text": "이제 더 이상 참을 수 없다!\n준비됐어? 다 같이 가자!",
+  "model": "gemini-3.8-flash",
+  "ms": 1795,
+  "batch": 3,
+  "prompt_tokens": 3371,
+  "output_tokens": 120
+ },
+ {
+  "file": "ko_03_small.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/ko_03_small.png",
+  "text": "조금만 더 가면 다 왔어.\n힘내자, 곧 도착해.",
+  "model": "gemini-3.8-flash",
+  "ms": 1795,
+  "batch": 3,
+  "prompt_tokens": 3371,
+  "output_tokens": 120
+ },
+ {
+  "file": "ko_04_hanja_brackets.png",
+  "path": "/Users/lawrencewong/Movies/chimahon_ios/ocr-spike/compare/corpus/ko_04_hanja_brackets.png",
+  "text": "春來秋去, 시간은 흐른다.\n「그래도 우리는 여기 있어」",
+  "model": "gemini-3.8-flash",
+  "ms": 1795,
+  "batch": 3,
+  "prompt_tokens": 3371,
+  "output_tokens": 120
+ }
+]

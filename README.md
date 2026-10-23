@@ -14,7 +14,7 @@ webtoon reader.
 | C++ dictionary engine (hoshidicts) on iOS | ✅ confirmed | `chimahon-spike/README.md` |
 | nhattruyenqq source (URLs, API, Cloudflare) | ✅ low risk | `FEASIBILITY.md` §11 |
 | Apple Vision OCR (Vietnamese + Korean) | ✅ 100% on real pages | `ocr-spike/README.md` |
-| LLM-vision OCR cross-check (Gemini) | ✅ perfect | `ocr-spike/README.md` |
+| OCR head-to-head: Apple Vision vs Gemini vision | ✅ **Vision locked as engine** — dialogue tie; stress CER 1.71% vs 0.00%; LLM-vision = opt-in crop fallback | `ocr-spike/README.md` |
 | Free-tier translation chain (Gemini) | ✅ works + throttling mapped | `translation-spike/README.md` |
 | WKWebView Cloudflare cookie-bridge | ✅ proven end-to-end | `cloudflare-spike/README.md` |
 | CBZ local reader (ZIP+zlib, no deps) | ✅ proven (bench + UI) | `cbz-spike/README.md` |

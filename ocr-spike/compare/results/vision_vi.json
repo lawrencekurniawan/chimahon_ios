@@ -1,0 +1,269 @@
+[
+  {
+    "file" : "vi_01_regular.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "Tôi sẽ không bao giờ bỏ cuộc.",
+        "y" : 0.79533333278490015
+      },
+      {
+        "confidence" : 1,
+        "text" : "Dù cho có khó khăn đến đâu.",
+        "y" : 0.75031868142331315
+      }
+    ],
+    "ms" : 1620,
+    "path" : "..\/compare\/corpus\/vi_01_regular.png"
+  },
+  {
+    "file" : "vi_02_bold_caps.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "ĐÙ RÒII",
+        "y" : 0.80188568285266193
+      },
+      {
+        "confidence" : 1,
+        "text" : "TA SẼ KHÔNG CHỊU THỪA NỮAI",
+        "y" : 0.76333333289488958
+      }
+    ],
+    "ms" : 77,
+    "path" : "..\/compare\/corpus\/vi_02_bold_caps.png"
+  },
+  {
+    "file" : "vi_03_italic_stylized.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "CẢNH ĐẸP MÊ HÒN CHO ĐỜI TA,",
+        "y" : 0.80087209187499053
+      },
+      {
+        "confidence" : 1,
+        "text" : "CHƠI VỜI BÊN NHỮNG NGƯỜI THÂN YÊU.",
+        "y" : 0.77138374365212292
+      }
+    ],
+    "ms" : 103,
+    "path" : "..\/compare\/corpus\/vi_03_italic_stylized.png"
+  },
+  {
+    "file" : "vi_04_small.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "Ừ, tao biết rôi.",
+        "y" : 0.80198782563159865
+      },
+      {
+        "confidence" : 1,
+        "text" : "Mày đừng lo, tao tự lo được.",
+        "y" : 0.77199999997506552
+      }
+    ],
+    "ms" : 82,
+    "path" : "..\/compare\/corpus\/vi_04_small.png"
+  },
+  {
+    "file" : "vi_05_outline_sfx.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "BỐP!",
+        "y" : 0.74709302292205182
+      },
+      {
+        "confidence" : 1,
+        "text" : "RẦM!",
+        "y" : 0.67183173075676883
+      }
+    ],
+    "ms" : 69,
+    "path" : "..\/compare\/corpus\/vi_05_outline_sfx.png"
+  },
+  {
+    "file" : "vi_06_diacritic_heavy.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "Tôi ước gì được gặp lại những ngày xưa,",
+        "y" : 0.79800000027065543
+      },
+      {
+        "confidence" : 1,
+        "text" : "nghĩa là phải chấp nhận tất cả những gì xảy ra.",
+        "y" : 0.7674418603992077
+      },
+      {
+        "confidence" : 1,
+        "text" : "Đường ướt, giấy lộn, học phí cứ tăng mãi.",
+        "y" : 0.73546511677534709
+      }
+    ],
+    "ms" : 112,
+    "path" : "..\/compare\/corpus\/vi_06_diacritic_heavy.png"
+  },
+  {
+    "file" : "vi_07_low_contrast.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "Con đường này dẫn đến đâu?",
+        "y" : 0.79941860427332612
+      },
+      {
+        "confidence" : 1,
+        "text" : "Chẳng ai trả lời tôi cả.",
+        "y" : 0.75290697688545238
+      }
+    ],
+    "ms" : 85,
+    "path" : "..\/compare\/corpus\/vi_07_low_contrast.png"
+  },
+  {
+    "file" : "vi_08_busy_bg.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "Cẩn thận! Có chuyện gì đó rồi!",
+        "y" : 0.8041666668229166
+      },
+      {
+        "confidence" : 1,
+        "text" : "Mau chạy đi, ngay bây giờ!",
+        "y" : 0.74733333311093686
+      }
+    ],
+    "ms" : 95,
+    "path" : "..\/compare\/corpus\/vi_08_busy_bg.png"
+  },
+  {
+    "file" : "vi_09_serif_italic.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "Một thoáng ký ức trôi qua...",
+        "y" : 0.79360465073970832
+      },
+      {
+        "confidence" : 1,
+        "text" : "như làn khói mỏng ban mai.",
+        "y" : 0.74133333314346195
+      }
+    ],
+    "ms" : 82,
+    "path" : "..\/compare\/corpus\/vi_09_serif_italic.png"
+  },
+  {
+    "file" : "vi_10_drop_shadow.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "ĐẾN LÚC PHẢI QUYẾT ĐỊNH RỒI.",
+        "y" : 0.80087209250794467
+      },
+      {
+        "confidence" : 1,
+        "text" : "KHÔNG CÒN LỰA CHỌN NỮA.",
+        "y" : 0.75733333310936202
+      }
+    ],
+    "ms" : 82,
+    "path" : "..\/compare\/corpus\/vi_10_drop_shadow.png"
+  },
+  {
+    "file" : "vi_11_sfx_mixed_en.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "VỤTI WHOOSH~",
+        "y" : 0.74599999947916662
+      },
+      {
+        "confidence" : 1,
+        "text" : "ĐINHI PENGI",
+        "y" : 0.66133720914126859
+      }
+    ],
+    "ms" : 72,
+    "path" : "..\/compare\/corpus\/vi_11_sfx_mixed_en.png"
+  },
+  {
+    "file" : "vi_12_two_blocks.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "Ở trên kia nhìn xuống,",
+        "y" : 0.82733333308638091
+      },
+      {
+        "confidence" : 1,
+        "text" : "ta thấy cả thế giới.",
+        "y" : 0.73999999966812546
+      },
+      {
+        "confidence" : 1,
+        "text" : "Còn ở dưới này,",
+        "y" : 0.68749999944316065
+      },
+      {
+        "confidence" : 1,
+        "text" : "chỉ toàn là bóng tối.",
+        "y" : 0.64399999995345647
+      }
+    ],
+    "ms" : 96,
+    "path" : "..\/compare\/corpus\/vi_12_two_blocks.png"
+  },
+  {
+    "file" : "vi_13_rare_chars.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "«Đường về» - câu chuyện của riêng ta.",
+        "y" : 0.79941860480829285
+      },
+      {
+        "confidence" : 1,
+        "text" : "Đ ơ ấữ ợ nhỉ? Đúng vậy!",
+        "y" : 0.76333333383668744
+      }
+    ],
+    "ms" : 91,
+    "path" : "..\/compare\/corpus\/vi_13_rare_chars.png"
+  },
+  {
+    "file" : "vi_14_mixed_en_caps.png",
+    "lang" : "vi-VT",
+    "lines" : [
+      {
+        "confidence" : 1,
+        "text" : "STOP RIGHT THERE!",
+        "y" : 0.7936046513691476
+      },
+      {
+        "confidence" : 1,
+        "text" : "ĐỪNG CÓ DI CHUYỂN!",
+        "y" : 0.75561499000685939
+      }
+    ],
+    "ms" : 82,
+    "path" : "..\/compare\/corpus\/vi_14_mixed_en_caps.png"
+  }
+]
